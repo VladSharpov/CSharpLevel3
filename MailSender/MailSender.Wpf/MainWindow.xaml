@@ -1,0 +1,25 @@
+﻿<Window x:Class="MailSender.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <DockPanel>
+        <Menu VerticalAlignment="Top" Height="25" DockPanel.Dock="Top"/>
+
+        <Grid Background="#FFE5E5E5">
+            <Button Name="btnSendMail" Content="Send emails" HorizontalAlignment="Left" Margin="582,247,0,0" VerticalAlignment="Top" Width="140" Height="37" FontSize="20" Click="BtnSendMail_Click" />
+            <PasswordBox Name="passwordBox" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Right" HorizontalContentAlignment="Stretch" Margin="536,185,10,0" Width="248"/>
+            <Label Content="Password:" HorizontalAlignment="Left" Margin="535,169,0,0" VerticalAlignment="Top"/>
+            <Label Content="Login:" HorizontalAlignment="Left" Margin="536,109,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="headerBox" HorizontalAlignment="Left" Margin="209,38,0,0" TextWrapping="Wrap" Text="Привет из C#" VerticalAlignment="Top" Width="159" FontSize="18"/>
+            <TextBox x:Name="mailTextBox" HorizontalAlignment="Left" Height="291" Margin="42,83,0,0" TextWrapping="Wrap" Text="Hello, world!" VerticalAlignment="Top" Width="488" FontSize="16"/>
+            <Label Content="Header:" HorizontalAlignment="Left" Margin="209,22,0,0" VerticalAlignment="Top"/>
+            <Label Content="Mail text:" HorizontalAlignment="Left" Margin="42,67,0,0" VerticalAlignment="Top" Width="108"/>
+            <TextBox x:Name="loginBox" HorizontalAlignment="Left" Margin="536,125,0,0" TextWrapping="Wrap" Text="@yandex.ru" VerticalAlignment="Top" Width="248"/>
+        </Grid>
+
+    </DockPanel>
+</Window>
