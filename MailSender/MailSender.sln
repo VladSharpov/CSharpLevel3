@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.Wpf", "MailSender.Wpf\MailSender.Wpf.csproj", "{0DF8761E-F4E2-4667-9025-034D9BF2F2D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordDll", "PasswordDll\PasswordDll.csproj", "{C678D8C8-A7E7-433F-A220-9C84064AA510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabSwitcher", "TabSwitcher\TabSwitcher.csproj", "{5544DF99-3725-4FE3-9D35-36459843A7AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0DF8761E-F4E2-4667-9025-034D9BF2F2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DF8761E-F4E2-4667-9025-034D9BF2F2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DF8761E-F4E2-4667-9025-034D9BF2F2D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C678D8C8-A7E7-433F-A220-9C84064AA510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C678D8C8-A7E7-433F-A220-9C84064AA510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C678D8C8-A7E7-433F-A220-9C84064AA510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C678D8C8-A7E7-433F-A220-9C84064AA510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5544DF99-3725-4FE3-9D35-36459843A7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5544DF99-3725-4FE3-9D35-36459843A7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5544DF99-3725-4FE3-9D35-36459843A7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5544DF99-3725-4FE3-9D35-36459843A7AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
