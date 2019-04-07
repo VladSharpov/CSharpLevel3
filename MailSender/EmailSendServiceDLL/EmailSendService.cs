@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MailSender.Wpf
+namespace EmailSendServiceDLL
 {
     class EmailSendServiceClass
     {

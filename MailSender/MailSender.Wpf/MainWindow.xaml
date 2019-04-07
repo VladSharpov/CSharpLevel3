@@ -1,15 +1,129 @@
-﻿<Window x:Class="MailSender.Wpf.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender.Wpf"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:TabSwitcher="clr-namespace:TabSwitcher;assembly=TabSwitcher"
+        x:Class="MailSender.Wpf.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <DockPanel>
-        <Menu VerticalAlignment="Top" Height="25" DockPanel.Dock="Top"/>
+        <Menu VerticalAlignment="Top" Height="25" DockPanel.Dock="Top">
+            <MenuItem Header="File" Height="25" Width="50" VerticalAlignment="Top">
+                <MenuItem x:Name="menuItemClose" Header="Close" 
+                          HorizontalAlignment="Left" Height="25" Width="Auto" 
+                          Click="MenuItemClose_Click"/>
+            </MenuItem>
+        </Menu>
 
-        <Grid Background="#FFE5E5E5">
+        <TabControl x:Name="tabControl" DockPanel.Dock="Top" >
+            <TabItem x:Name="tabItemFormMailingGroups" Header="Form mailing groups">
+                <DockPanel>
+                    <ToolBarTray VerticalAlignment="Top" Height="65" DockPanel.Dock="Top">
+                        <ToolBar x:Name="toolBarSender" Width="505" Height="30">
+                            <Label x:Name="labelSender" Content="Choose sender:" 
+                                   Width="130" Height="25"/>
+                            <ComboBox x:Name="comboBoxSenderSelect" Width="270" Height="25"
+                                      ToolTip="Choose sender email" Margin="0"
+                                      SelectedIndex="0"/>
+                            <Button x:Name="buttonAddSender" ToolTip="Add" Height="25" Width="25">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Plus" Foreground="Green"/>
+                            </Button>
+                            <Button x:Name="buttonEditSender" ToolTip="Edit" Height="25" Width="25">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Edit" Foreground="DarkBlue"/>
+                            </Button>
+                            <Button x:Name="buttonDeleteSender" ToolTip="Delete" Height="25" Width="25">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Remove" Foreground="DarkRed"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar x:Name="toolBarSmtp" HorizontalAlignment="Left" 
+                                 Height="30" VerticalAlignment="Top" Width="505" 
+                                 Band="1" BandIndex="0">
+                            <Label x:Name="labelSmtp" Content="Choose smtp server:" 
+                                   Height="25" Width="130"/>
+                            <ComboBox x:Name="comboBoxSmtpSelect" 
+                                      Height="25" VerticalAlignment="Center" Width="270" 
+                                      SelectedIndex="0" ToolTip="Choose smtp-сервер" Margin="0"/>
+                            <Button x:Name="buttonAddSmtp" Width="25" Height="25" ToolTip="Add">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Plus" Foreground="Green"/>
+                            </Button>
+                            <Button x:Name="buttonEditSmtp" Width="25" Height="25" ToolTip="Edit">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Edit" Foreground="DarkBlue"/>
+                            </Button>
+                            <Button x:Name="buttonDeleteSmtp" Width="25" Height="25" ToolTip="Delete">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Remove" Foreground="DarkRed"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar x:Name="toolBarToScheduler" Height="30" Width="200" 
+                                 Band="0" BandIndex="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <TabSwitcher:TabSwitcherControl x:Name="tabSwitcher1" PreviousIsHidden="True" 
+                                                            ButtonNextClick="TabSwitcher1_ButtonNextClick"/>
+                        </ToolBar>
+                        <ToolBar x:Name="toolBarAddressee" 
+                                 HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="200" 
+                                 Band="1" BandIndex="1" >
+                            <Label x:Name="labelAddressee" Content="Addressee list:" Height="25" Width="90"/>
+                            <Button x:Name="buttonAddAddressee" Width="25" Height="25" ToolTip="Add">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Plus" Foreground="Green"/>
+                            </Button>
+                            <Button x:Name="buttonEditAddressee" Width="25" Height="25" ToolTip="Edit">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Edit" Foreground="DarkBlue"/>
+                            </Button>
+                            <Button x:Name="buttonDeleteAddressee" Width="25" Height="25" ToolTip="Delete">
+                                <fa:ImageAwesome Height="15" Width="15" Icon="Remove" Foreground="DarkRed"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <DataGrid x:Name="dataGridEmails" DockPanel.Dock="Bottom"/>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem x:Name="tabItemScheduler" Header="Scheduler">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Calendar x:Name="calendar" SelectionMode="MultipleRange"/>
+                        <xctk:TimePicker x:Name="timePicker"/>
+                        <Button x:Name="buttonSendAsScheduled" Height="25" 
+                                Click="ButtonSendAsScheduled_Click">
+                            <TextBlock Text="Send as scheduled"/>
+                        </Button>
+                        <Button x:Name="buttonSendImmediately" Height="25"
+                                Content="Send immediately"
+                                Click="ButtonSendImmediately_Click" />
+                    </StackPanel>
+                    <TabSwitcher:TabSwitcherControl x:Name="tabSwitcher2" Grid.Column="2" VerticalAlignment="Top" 
+                                                    ButtonPreviousClick="TabSwitcher2_ButtonPreviousClick" 
+                                                    ButtonNextClick="TabSwitcher2_ButtonNextClick"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="tabItemMailEditor" Header="Mail editor">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TabSwitcher:TabSwitcherControl Grid.Row="0" HorizontalAlignment="Right" NextIsHidden="True" Grid.Column="1" ButtonPreviousClick="TabSwitcherControl_ButtonPreviousClick"/>
+                    <RichTextBox x:Name="richTextBoxBody" Grid.Row="1" Grid.ColumnSpan="2" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Statistics" IsEnabled="False">
+                <Grid Name="griddd">
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!--<Grid Background="#FFE5E5E5">
             <Button Name="btnSendMail" Content="Send emails" HorizontalAlignment="Left" Margin="582,247,0,0" VerticalAlignment="Top" Width="140" Height="37" FontSize="20" Click="BtnSendMail_Click" />
             <PasswordBox Name="passwordBox" HorizontalAlignment="Center" VerticalAlignment="Top" DockPanel.Dock="Right" HorizontalContentAlignment="Stretch" Margin="536,185,10,0" Width="248"/>
             <Label Content="Password:" HorizontalAlignment="Left" Margin="535,169,0,0" VerticalAlignment="Top"/>
@@ -19,7 +133,7 @@
             <Label Content="Header:" HorizontalAlignment="Left" Margin="209,22,0,0" VerticalAlignment="Top"/>
             <Label Content="Mail text:" HorizontalAlignment="Left" Margin="42,67,0,0" VerticalAlignment="Top" Width="108"/>
             <TextBox x:Name="loginBox" HorizontalAlignment="Left" Margin="536,125,0,0" TextWrapping="Wrap" Text="@yandex.ru" VerticalAlignment="Top" Width="248"/>
-        </Grid>
+        </Grid>-->
 
     </DockPanel>
 </Window>
